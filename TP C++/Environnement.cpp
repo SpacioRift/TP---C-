@@ -1,10 +1,3 @@
-//
-//  Environnement.cpp
-//  TP-robots
-//
-//  Created by egrislin on 13/10/2022.
-//
-
 #include "Environnement.hpp"
 #include <iostream>
 
@@ -74,3 +67,6 @@ void Environnement::afficher(){
     }
 }
 
+int Environnement::getTailleGrille(){
+    return tailleGrille;
+}
