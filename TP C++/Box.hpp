@@ -4,12 +4,14 @@
 #include "Occupant.hpp"
 
 class Box : public Occupant{
+protected:
     bool tenir;
     bool lacher;
 public:
-    Box(char,int,int,bool,bool, Environnement & e);
-    bool tenue();
-    bool lachee();
+    Box(char,int,int, Environnement & e);
+    void setTenir(bool);
+    bool Tenir(char);
+    bool Lacher();
 };
 
 #endif // Box_hpp
