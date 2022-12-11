@@ -5,12 +5,13 @@
 #include "Box.hpp"
 using namespace std;
 
-void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
+void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot, Box boxY, Box boxR){
      while(i > 0 && i < 10){
         switch (i > 0 && i < 10){
         char rob;
         char speed;
         char dir;
+        char box;
         int speedValue;
         int x;
         int y;
@@ -27,7 +28,7 @@ void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
                 }
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
         
         case 2: // SPEED
@@ -66,7 +67,7 @@ void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
                 }
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
 
         case 3: // DIRECTION
@@ -105,7 +106,7 @@ void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
                 }
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
 
         case 4: // OCCUPY
@@ -130,19 +131,44 @@ void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
                 }
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
 
         case 5: // GRAB
+            cout << "\n CHOOSE YOUR ROBOT (R OR 1 IN CAPS) : " << endl;
+            cin >> rob;
+                if(rob = 'R'){
+                    cout << "\n SEARCH ONE BOX (Y OR B IN CAPS) : " << endl;
+                    cin >> box;
+                        if(box = 'Y'){
+                            robR.tenir(robR, entrepot, boxY);
+                        }else if(box = 'B'){
+                            robR.tenir(robR, entrepot, boxR);
+                        }else{
+                            cout << "\n THIS BOX DOESN'T EXIST !";
+                        }
+                }else if(rob = '1'){
+                    cout << "\n SEARCH ONE BOX (Y OR B IN CAPS) : " << endl;
+                    cin >> box;
+                        if(box = 'Y'){
+                            rob1.tenir(rob1, entrepot, boxY);
+                        }else if(box = 'B'){
+                            rob1.tenir(rob1, entrepot, boxR);
+                        }else{
+                            cout << "\n THIS BOX DOESN'T EXIST !";
+                        }
+                }else{
+                    cout << "\n THIS ROBOT DOESN'T EXIST !" << endl;
+                }            
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
 
         case 6: // DROP
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
 
         case 7: // FREE
@@ -167,7 +193,7 @@ void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
                 }
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
 
         case 8: // SKIP
@@ -178,9 +204,8 @@ void menuIndicator(int i, Robot robR, Robot rob1, Environnement entrepot){
             entrepot.afficher();
             cout << "\n CHOOSE A NUMBER : " << endl;
             cin >> i;
-            menuIndicator(i, robR, rob1, entrepot);
+            menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
             break;
-        
         default:
             break;
         }
@@ -197,8 +222,8 @@ int main(int argc, const char * argv[])
 
     Robot rob1('1', 8, 8, 1, 'E', entrepot);
     Robot robR('R', 8, 7, 1, 'E', entrepot);
-    entrepot.afficher();
-
+    Box boxY('Y', 5, 5, entrepot);
+    Box boxR('B', 3, 8, entrepot);
 
 cout 
 << "    ---------------------------------------------------------------------------------------------- \n" 
@@ -224,6 +249,6 @@ cout
 << "    ---------------------------------------------------------------------------------------------- \n"
 << "\n CHOOSE A NUMBER : " << endl;
         cin >> i;
-        menuIndicator(i, robR, rob1, entrepot);
+        menuIndicator(i, robR, rob1, entrepot, boxY, boxR);
     return 0;
 }
