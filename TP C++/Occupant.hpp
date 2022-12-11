@@ -7,8 +7,12 @@ class Occupant{
         int x;
         int y;
     public:
-        occupant();
+        Occupant();
         char getId();
+        int getX();
+        int getY();
+        void setX(int);
+        void setY(int);
 };
 
 #endif /* Occupant_hpp */
