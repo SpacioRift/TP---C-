@@ -1,10 +1,3 @@
-//
-//  Position.hpp
-//  TP-robots
-//
-//  Created by egrislin on 13/10/2022.
-//
-
 #ifndef Position_hpp
 #define Position_hpp
 
@@ -24,4 +17,3 @@ public:
 };
 
 #endif /* Position_hpp */
-
